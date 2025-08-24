@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPoint</title>
+    <link rel="stylesheet" href="index.css">
+    <!--
+        Grid Layout:
+        - Topbar: 80px height (header)
+        - Main Area: auto (main content)
+        - Footer: 40px height (footer)
+        - Grid columns: 1fr (single column)
+    -->
+</head>
+<body>
+    <div class="container">
+        <header class="topbar">
+            <!-- Topbar: 80px height -->
+            <img src="logo_waypoint.png" alt="" id="lg_top">
+            <div id="links_top">
+                <a href="" class="links">viajens</a>
+                <a href="" class="links">passagens</a>
+                <a href="" class="links">descobrir</a>
+                <a href="" class="links">contato</a>
+            </div>
+            <img src="icone.png" alt="" id="icon_top">
+            <form action="login.html">
+            <button id="login_bt">login</button>
+            </form>
+        </header>
+
+        <main class="main-content">
+            <!-- Search bar agora faz parte da main-content -->
+            <div id="search_bar">
+                <h2 id="search_bar_title">Qual será sua proxima?</h2>
+                <input type="text" class="search_input" placeholder="Origem">
+                <input type="text" class="search_input" placeholder="Destino">
+                <strong>início</strong>
+                <input type="date" name="" id="date_input" >
+                <input type="submit" value="Pesquisar" id="search_button">
+            </div>
+            <!-- Centraliza o grid 3x3 -->
+            <button id="scroll-left" class="scroll-btn scroll-btn-left">&#8592;</button>
+            <div class="grid-3x3">
+                <div id="section1" class="section bg1">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">ILHA DE MARAJÓ</span><br>
+                        <span class="city-desc">Pará, natureza selvagem e cultura única</span>
+                        <span class="stars-rating">
+                            R$1000
+                            &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                            <span class="star-score">8,2</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section2" class="section bg2">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">PRAIA DO FORTE</span><br>
+                        <span class="city-desc">Bahia, mar cristalino e vilarejo charmoso</span>
+                        <span class="stars-rating">
+                            R$850
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                            <span class="star-score">9,0</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section3" class="section bg3">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">BONITO</span><br>
+                        <span class="city-desc">Mato Grosso do Sul, rios transparentes e aventura</span>
+                        <span class="stars-rating">
+                            R$1200
+                            &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                            <span class="star-score">8,5</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section4" class="section bg4">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">GRAMADO</span><br>
+                        <span class="city-desc">Rio Grande do Sul, clima europeu e gastronomia</span>
+                        <span class="stars-rating">
+                            R$950
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                            <span class="star-score">9,3</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section5" class="section bg5">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">JERICOACOARA</span><br>
+                        <span class="city-desc">Ceará, dunas, lagoas e pôr do sol inesquecível</span>
+                        <span class="stars-rating">
+                            R$1100
+                            &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                            <span class="star-score">8,7</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section6" class="section bg6">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">OURO PRETO</span><br>
+                        <span class="city-desc">Minas Gerais, história e arquitetura colonial</span>
+                        <span class="stars-rating">
+                            R$700
+                            &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                            <span class="star-score">8,0</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section7" class="section bg7">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">LENÇÓIS MARANHENSES</span><br>
+                        <span class="city-desc">Maranhão, dunas e lagoas de tirar o fôlego</span>
+                        <span class="stars-rating">
+                            R$1300
+                            &#9733;&#9733;&#9733;&#9733;&#9733;
+                            <span class="star-score">9,1</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+                <div id="section8" class="section bg8">
+                    <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
+                    <div class="side-content" style="display:none;">
+                        <h3>Informações</h3>
+                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                    </div>
+                    <span class="section-content">
+                        <span class="city-title">FOZ DO IGUAÇU</span><br>
+                        <span class="city-desc">Paraná, cataratas e natureza exuberante</span>
+                        <span class="stars-rating">
+                            R$1150
+                            &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                            <span class="star-score">8,8</span>
+                        </span>
+                    </span>
+                    <button class="arrow-btn right-arrow">&#8594;</button>
+                </div>
+            </div>
+            <button id="scroll-right" class="scroll-btn scroll-btn-right">&#8594;</button>
+            <h1>Mais procurados em Brasil:</h1>
+            <!-- Novas subseções adicionadas aqui -->
+            <div class="sub-sections-row">
+                <div class="sub-section">
+                    <span class="sub-section-title">CANOA QUEBRADA</span><br>
+                    <span class="sub-section-desc">Ceará, falésias e mar azul</span>
+                    <span class="stars-rating">
+                        R$600
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,1</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Lucas S.</strong>: “Lugar incrível, paisagem maravilhosa e ótimos passeios!”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">PETRÓPOLIS</span><br>
+                    <span class="sub-section-desc">RJ, história imperial e clima ameno</span>
+                    <span class="stars-rating">
+                        R$720
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,0</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Marina F.</strong>: “Cidade charmosa, cheia de cultura e ótimos restaurantes.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">ILHABELA</span><br>
+                    <span class="sub-section-desc">SP, praias e trilhas</span>
+                    <span class="stars-rating">
+                        R$950
+                        &#9733;&#9733;&#9733;&#9733;&#9733;
+                        <span class="star-score">9,1</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Renato G.</strong>: “Praias lindas e natureza exuberante. Voltarei com certeza!”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">CAMPOS DO JORDÃO</span><br>
+                    <span class="sub-section-desc">SP, clima de montanha</span>
+                    <span class="stars-rating">
+                        R$800
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,4</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Patrícia M.</strong>: “Clima agradável, arquitetura linda e ótimos chocolates.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">PORTO SEGURO</span><br>
+                    <span class="sub-section-desc">Bahia, história e belas praias</span>
+                    <span class="stars-rating">
+                        R$780
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,3</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>João V.</strong>: “Muita animação, praias lindas e muita história.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">BALNEÁRIO CAMBORIÚ</span><br>
+                    <span class="sub-section-desc">SC, vida noturna e arranha-céus</span>
+                    <span class="stars-rating">
+                        R$1100
+                        &#9733;&#9733;&#9733;&#9733;&#9733;
+                        <span class="star-score">9,0</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Fernanda T.</strong>: “Cidade moderna, ótimas praias e vida noturna agitada.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">ARACAJU</span><br>
+                    <span class="sub-section-desc">Sergipe, tranquilidade e belas praias</span>
+                    <span class="stars-rating">
+                        R$650
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,2</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Gabriel L.</strong>: “Cidade tranquila, praias limpas e povo acolhedor.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">CALDAS NOVAS</span><br>
+                    <span class="sub-section-desc">GO, águas termais e lazer</span>
+                    <span class="stars-rating">
+                        R$700
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,0</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Beatriz P.</strong>: “Perfeito para relaxar, piscinas quentes e diversão para família.”
+                    </div>
+                </div>
+                <!-- Novas sub-sections abaixo -->
+                <div class="sub-section">
+                    <span class="sub-section-title">PARATY</span><br>
+                    <span class="sub-section-desc">RJ, centro histórico e praias paradisíacas</span>
+                    <span class="stars-rating">
+                        R$900
+                        &#9733;&#9733;&#9733;&#9733;<span class="star-empty">&#9733;</span>
+                        <span class="star-score">8,6</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Juliana R.</strong>: “Cidade encantadora, cheia de cultura e belas paisagens.”
+                    </div>
+                </div>
+                <div class="sub-section">
+                    <span class="sub-section-title">MACEIÓ</span><br>
+                    <span class="sub-section-desc">AL, mar azul e piscinas naturais</span>
+                    <span class="stars-rating">
+                        R$1050
+                        &#9733;&#9733;&#9733;&#9733;&#9733;
+                        <span class="star-score">9,2</span>
+                    </span>
+                    <div class="user-review">
+                        <strong>Eduardo P.</strong>: “Águas cristalinas e culinária maravilhosa. Recomendo!”
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <!-- Footer: 40px height -->
+            <span id="footer_text">WayPoint © 2024. Todos os direitos reservados.</span>
+            <div id="footer_links">
+                <a href="" class="footer_link">Sobre nós</a>
+                <a href="" class="footer_link">Termos de serviço</a>
+                <a href="" class="footer_link">Política de privacidade</a>
+                <a href="" class="footer_link">Ajuda</a>
+            </div>
+            <div id="social_icons">
+                <img style="height: 30px ;width: 30px;;" src="facebook.png" alt="" class="social_icon">
+                <img style="height: 30px ;width: 30px;;" src="twitter.png" alt="" class="social_icon">
+                <img style="height: 30px ;width: 30px;;" src="instagram.png" alt="" class="social_icon">
+                
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    const nome = localStorage.getItem('usuario_nome');
+    const email = localStorage.getItem('usuario_email');
+
+    if (nome) {
+        // Mostra o nome e ativa o sistema de imagem
+        $('#icon_top').before('<span id="usuario_nome" style="margin-left:300px;color:#fff;font-weight:bold;">' + nome + '</span>');
+        $('#login_bt').hide(); // Esconde o botão de login
+
+        // Adiciona botão de deslogar ao lado do nome do usuário
+        $('#usuario_nome').after('<button id="logout_bt" style="margin-left:15px; background:#F4C542; color:#2F3A3D; border:none; border-radius:6px; padding:6px 14px; font-weight:bold; cursor:pointer;">Sair</button>');
+
+        // Evento de deslogar
+        $('#logout_bt').on('click', function() {
+            localStorage.removeItem('usuario_nome');
+            localStorage.removeItem('usuario_email');
+            window.location.href = "login.html";
+        });
+
+        // Ao carregar, se houver email, carrega a imagem do servidor
+        if (email) {
+            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email));
+        }
+
+        $('#icon_top').css('cursor', 'pointer').on('click', function(e) {
+            $('#user-popup').remove();
+            const popup = $(`
+                <div id="user-popup" style="position: absolute; top: 70px; right: 40px; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(49,116,125,0.15); padding: 24px 20px 18px 20px; z-index: 9999; min-width: 220px; display: flex; flex-direction: column; gap: 10px;">
+                    <label style="font-size:0.97em; color:#31747D; font-weight:500; margin-bottom:2px;">Alterar imagem:</label>
+                    <input type="file" accept="image/*" id="icon_upload" style="padding:4px 0;">
+                    <button id="close-popup" style="margin-top:8px; background:#31747D; color:#fff; border:none; border-radius:6px; padding:7px 0; font-weight:bold; cursor:pointer;">Fechar</button>
+                </div>
+            `);
+            $('body').append(popup);
+
+            // Upload da imagem para o servidor
+            $('#icon_upload').on('change', function(event) {
+                const file = event.target.files[0];
+                if (file && email) {
+                    const formData = new FormData();
+                    formData.append('icon', file);
+                    formData.append('email', email);
+                    $.ajax({
+                        url: '/upload_icon',
+                        type: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(res) {
+                            // Atualiza o ícone após upload
+                            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email) + '?t=' + Date.now());
+                        },
+                        error: function() {
+                            alert('Erro ao enviar imagem.');
+                        }
+                    });
+                }
+            });
+
+            $('#close-popup').on('click', function() {
+                $('#user-popup').remove();
+            });
+
+            setTimeout(function() {
+                $(document).on('mousedown.userpopup', function(ev) {
+                    if (!$(ev.target).closest('#user-popup, #icon_top').length) {
+                        $('#user-popup').remove();
+                        $(document).off('mousedown.userpopup');
+                    }
+                });
+            }, 100);
+
+            e.stopPropagation();
+        });
+
+        // Ao carregar, se houver email, carrega a imagem do servidor
+        if (email) {
+            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email));
+        }
+    }
+
+    function expandSection($section) {
+        $('.section.expanded').removeClass('expanded');
+        $section.addClass('expanded');
+        $('body').addClass('section-expanded');
+        if (!$('.blur-overlay').length) {
+            $('body').append('<div class="blur-overlay"></div>');
+        }
+        updateArrows();
+        updateSideContent();
+        // Esconde o section-content da expandida
+        $section.find('.section-content').hide();
+    }
+
+    function closeExpanded() {
+        $('.section.expanded').removeClass('expanded');
+        $('body').removeClass('section-expanded');
+        $('.blur-overlay').remove();
+        updateArrows();
+        updateSideContent();
+        // Mostra novamente todos os section-content
+        $('.section-content').show();
+    }
+
+    $('.section').click(function(e) {
+        if ($(this).hasClass('expanded')) {
+            closeExpanded();
+        } else {
+            expandSection($(this));
+        }
+        e.stopPropagation();
+    });
+
+    $(document).click(function(e) {
+        if ($('.section.expanded').length && !$(e.target).closest('.section.expanded').length) {
+            closeExpanded();
+        }
+    });
+
+    $('.arrow-btn').click(function(e) {
+        e.stopPropagation();
+        var $current = $(this).closest('.section');
+        var $allSections = $('.section');
+        var idx = $allSections.index($current);
+
+        if ($(this).hasClass('right-arrow')) {
+            var $next = $allSections.eq(idx + 1);
+            if ($next.length) {
+                expandSection($next);
+            }
+        } else if ($(this).hasClass('left-arrow')) {
+            var $prev = $allSections.eq(idx - 1);
+            if ($prev.length) {
+                expandSection($prev);
+            }
+        }
+    });
+
+    function updateArrows() {
+        $('.section').each(function(i, el) {
+            var $el = $(el);
+            if ($el.hasClass('expanded')) {
+                $el.find('.left-arrow').toggle(i !== 0);
+                $el.find('.right-arrow').toggle(i !== $('.section').length - 1);
+            } else {
+                $el.find('.arrow-btn').hide();
+            }
+        });
+    }
+
+    function updateSideContent() {
+        $('.section .side-content').hide();
+        $('.section.expanded .side-content').show();
+    }
+
+    // Scroll horizontal das sections, 4 por vez, mas deslizando 1 por clique
+    let currentIndex = 0;
+    const $sections = $('.grid-3x3 .section');
+    const totalSections = $sections.length;
+    const visibleCount = 4;
+
+    function showSections(index) {
+        $sections.hide();
+        $sections.slice(index, index + visibleCount).show();
+        $('#scroll-left').toggle(index > 0);
+        $('#scroll-right').toggle(index + visibleCount < totalSections);
+    }
+
+    $('#scroll-left').click(function(e) {
+        e.stopPropagation();
+        if (currentIndex > 0) {
+            currentIndex--;
+            showSections(currentIndex);
+        }
+    });
+
+    $('#scroll-right').click(function(e) {
+        e.stopPropagation();
+        if (currentIndex + visibleCount < totalSections) {
+            currentIndex++;
+            showSections(currentIndex);
+        }
+    });
+
+    // Inicializa mostrando as primeiras 4 sections
+    showSections(currentIndex);
+
+    updateArrows();
+    updateSideContent();
+
+    // Busca por cidade/local ao clicar no botão pesquisar
+    $('#search_button').click(function(e) {
+        e.preventDefault();
+        const termo = $('.search_input').eq(1).val().trim().toLowerCase(); // Agora pega o input de destino corretamente
+        const $sections = $('.grid-3x3 .section');
+        let encontrou = false;
+
+        if (termo === "") {
+            // Se vazio, mostra todas as sections normalmente
+            showSections(currentIndex);
+            return;
+        }
+
+        $sections.hide().each(function() {
+            const texto = $(this).find('.section-content').text().toLowerCase();
+            if (texto.includes(termo)) {
+                $(this).show();
+                encontrou = true;
+            }
+        });
+
+        // Esconde botões de scroll se só uma section aparecer
+        if ($('.grid-3x3 .section:visible').length <= visibleCount) {
+            $('#scroll-left, #scroll-right').hide();
+        } else {
+            $('#scroll-left').toggle(currentIndex > 0);
+            $('#scroll-right').toggle(currentIndex + visibleCount < totalSections);
+        }
+
+        // Mostra pop-up se não encontrar nada
+        if (!encontrou) {
+            alert("Nenhum destino encontrado com esse nome ou valor. Tente outro termo!");
+        }
+    });
+
+    // Permite buscar ao pressionar Enter no input de destino
+    $('.search_input').eq(1).on('keypress', function(e) {
+        if (e.which === 13) {
+            $('#search_button').click();
+        }
+    });
+
+    // Adiciona o popup de inputs ao clicar no icon_top
+    $('#icon_top').css('cursor', 'pointer').on('click', function(e) {
+        // Remove popup anterior se existir
+        $('#user-popup').remove();
+
+        // Cria o popup com o primeiro input sendo um upload de imagem
+        const popup = $(`
+            <div id="user-popup" style="
+                position: absolute;
+                top: 70px;
+                right: 40px;
+                background: #fff;
+                border-radius: 12px;
+                box-shadow: 0 4px 24px rgba(49,116,125,0.15);
+                padding: 24px 20px 18px 20px;
+                z-index: 9999;
+                min-width: 220px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            ">
+                <label style="font-size:0.97em; color:#31747D; font-weight:500; margin-bottom:2px;">Alterar imagem:</label>
+                <input type="file" accept="image/*" id="icon_upload" style="padding:4px 0;">
+                <input type="text" placeholder="Campo 2" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
+                <input type="text" placeholder="Campo 3" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
+                <button id="close-popup" style="margin-top:8px; background:#31747D; color:#fff; border:none; border-radius:6px; padding:7px 0; font-weight:bold; cursor:pointer;">Fechar</button>
+            </div>
+        `);
+
+        // Adiciona o popup ao body
+        $('body').append(popup);
+
+        // Troca a imagem do icon_top ao selecionar uma imagem
+        $('#icon_upload').on('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#icon_top').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Fecha ao clicar no botão
+        $('#close-popup').on('click', function() {
+            $('#user-popup').remove();
+        });
+
+        // Fecha ao clicar fora do popup
+        setTimeout(function() {
+            $(document).on('mousedown.userpopup', function(ev) {
+                if (!$(ev.target).closest('#user-popup, #icon_top').length) {
+                    $('#user-popup').remove();
+                    $(document).off('mousedown.userpopup');
+                }
+            });
+        }, 100);
+
+        e.stopPropagation();
+    });
+
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        const email = $('#login-email').val();
+        const senha = $('#login-password').val();
+        $.post('/login', { email, senha }, function(res) {
+            if (res.sucesso) {
+                localStorage.setItem('usuario_nome', res.nome);
+                localStorage.setItem('usuario_email', email); // ESSENCIAL!
+                window.location.href = "main.html";
+            } else {
+                alert(res.mensagem);
+            }
+        });
+    });
+});
+</script>
+</html>

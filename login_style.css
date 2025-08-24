@@ -1,0 +1,118 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #E6EEF0;
+}
+.login-main {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-box {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(49,116,125,0.10);
+    padding: 40px 32px 32px 32px;
+    min-width: 320px;
+    max-width: 90vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-title {
+    color: #31747D;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+.login-label {
+    color: #2F3A3D;
+    font-weight: 500;
+    margin-bottom: 6px;
+    margin-top: 12px;
+    align-self: flex-start;
+}
+.login-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1.5px solid #A8D5BA;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #E6EEF0;
+    color: #2F3A3D;
+    margin-bottom: 8px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.login-input:focus {
+    border-color: #31747D;
+    box-shadow: 0 0 0 2px #A8D5BA55;
+    outline: none;
+}
+.login-btn {
+    width: 100%;
+    padding: 12px 0;
+    background: #31747D;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.login-btn:hover {
+    background: #F4C542;
+    color: #2F3A3D;
+}
+.login-footer {
+    text-align: center;
+    color: #2F3A3D;
+    font-size: 0.95em;
+    margin-top: 18px;
+}
+.login-footer a {
+    color: #31747D;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.login-footer a:hover {
+    color: #F4C542;
+}
+.links {
+    background-color: #31747D;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+    font-weight: 500;
+}
+#links-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+}
+.links:hover {
+    background: #F4C542; /* Amarelo Dourado */
+    color: #2F3A3D;      /* Cinza Escuro */
+}
+@media (max-width: 500px) {
+    .login-box {
+        padding: 24px 8px;
+        min-width: 0;
+    }
+}
+#lg_top{
+    width: 120px;
+    margin-bottom: 20px;
+}

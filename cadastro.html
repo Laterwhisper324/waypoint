@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPoint - Cadastro</title>
+    <link rel="stylesheet" href="cadastro_style.css">
+</head>
+<body>
+    <div class="cadastro-container">
+        <header class="topbar">
+            <img src="../logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
+            <div id="links-container">
+                <a href="../index.html" class="links">Início</a>
+                <a href="#" class="links">Passagens</a>
+                <a href="#" class="links">Descobrir</a>
+                <a href="#" class="links">Contato</a>
+            </div>
+        </header>
+        <main class="cadastro-main">
+            <form class="cadastro-box" autocomplete="off" method="POST" action="http://localhost:3000/cadastro">
+                <div class="cadastro-title">Crie sua conta</div>
+                <label class="cadastro-label" for="cadastro-nome">Nome completo</label>
+                <input class="cadastro-input" type="text" id="cadastro-nome" name="nome" placeholder="Seu nome" required>
+                <label class="cadastro-label" for="cadastro-email">E-mail</label>
+                <input class="cadastro-input" type="email" id="cadastro-email" name="email" placeholder="seu@email.com" required>
+                <label class="cadastro-label" for="cadastro-senha">Senha</label>
+                <input class="cadastro-input" type="password" id="cadastro-senha" name="senha" placeholder="Crie uma senha" required>
+                <label class="cadastro-label" for="cadastro-confirmar">Confirmar senha</label>
+                <input class="cadastro-input" type="password" id="cadastro-confirmar" name="confirmar" placeholder="Repita a senha" required>
+                <button class="cadastro-btn" type="submit">Cadastrar</button>
+                <div class="cadastro-footer">
+                    Já tem conta? <a href="../login.html">Entrar</a>
+                </div>
+            </form>
+        </main>
+        <footer class="footer">
+            &copy; 2025 WayPoint. Todos os direitos reservados.
+        </footer>
+    </div>
+    <script>
+        // Supondo que você tenha acesso ao email e senha aqui
+        const email = 'exemplo@email.com';
+        const senha = 'senhaSecreta';
+
+        // Simulando a linha que conteria os dados do usuário
+        const linha = 'Nome: Usuário Exemplo | Email: exemplo@email.com | Senha: senhaSecreta';
+
+        const partes = linha.split('|').map(p => p.trim());
+        if (partes.length === 3) {
+            const nomeArq = partes[0].replace('Nome:', '').trim();
+            const emailArq = partes[1].replace('Email:', '').trim();
+            const senhaArq = partes[2].replace('Senha:', '').trim();
+            if (emailArq === email && senhaArq === senha) {
+                return res.send({ sucesso: true, nome: nomeArq });
+            }
+        }
+    </script>
+    <script href="server.js"></script>
+</body>
+</html>

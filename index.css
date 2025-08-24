@@ -1,0 +1,547 @@
+/*
+    Grid Layout:
+    - Topbar: 80px height (header)
+    - Main Area: auto (main content)
+    - Footer: 40px height (footer)
+    - Grid columns: 1fr (single column)
+
+    Paleta de Cores WayPoint:
+    - Azul Petróleo: #31747D (menus, botões, cabeçalho)
+    - Amarelo Dourado: #F4C542 (destaques, hover, ícones)
+    - Verde Claro Suave: #A8D5BA (fundos de seções/caixas)
+    - Cinza Azulado Claro: #E6EEF0 (background principal)
+    - Cinza Escuro: #2F3A3D (textos principais)
+*/
+
+body, html {
+    
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #E6EEF0; /* Cinza Azulado Claro */
+    color: #2F3A3D;      /* Cinza Escuro */
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.topbar {
+    background: #31747D; /* Azul Petróleo */
+    color: #fff;
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: left;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(49, 116, 125, 0.08);
+}
+
+.main-content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: transparent;
+    overflow: auto;
+    padding-bottom: 24px;
+}
+
+.grid-3x3 {
+    display: grid;
+    grid-template-columns: repeat(4, 280px); /* Sections maiores */
+    grid-template-rows: repeat(4, 100px);
+    gap: 24px;
+    margin-bottom: 0; /* Garante que não há espaço extra */
+    padding-bottom: 0;
+}
+
+.section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.08);
+    display: flex;
+    align-items: flex-end;
+    font-size: 1.2rem;
+    color: #2F3A3D;
+    transition: transform 0.4s cubic-bezier(.4,1.7,.7,1), box-shadow 0.3s;
+    min-width: 250px;
+    min-height: 400px;
+    width: 180px;
+    height: 180px;
+    padding: 16px;
+    margin: 0;
+    background: none;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.section:hover {
+    min-height: 410px; /* Aumenta a altura ao passar o mouse */
+    z-index: 2;
+    margin-top: 10px;
+    margin-left: 10px;
+    transition: 0.5s;
+}
+
+.section:not(:hover){
+    transition: 0.5s;
+}
+
+.section.bg1::before {
+    background-image: url('imagem_1.jpg');
+}
+.section.bg2::before {
+    background-image: url('imagem_2.jpg');
+}
+.section.bg3::before {
+    background-image: url('imagem_3.jpg');
+}
+.section.bg4::before {
+    background-image: url('imagem_4.jpg');
+}
+.section.bg5::before {
+    background-image: url('imagem_5.jpg');
+}
+.section.bg6::before {
+    background-image: url('imagem_6.jpg');
+}
+.section.bg7::before {
+    background-image: url('imagem_7.jpg');
+}
+.section.bg8::before {
+    background-image: url('imagem_8.jpg');
+}
+/* Adicione mais conforme necessário */
+
+.section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    border-radius: 12px;
+    z-index: 0;
+    transition: filter 0.3s;
+}
+
+.section.expanded {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    width: 60vw !important;
+    height: 60vh !important;
+    min-width: 300px;
+    min-height: 300px;
+    max-width: 90vw;
+    max-height: 90vh;
+    transform: translate(-50%, -50%) scale(1); /* Fica centralizada e em tamanho real */
+    z-index: 9999 !important;
+    box-shadow: 0 8px 32px rgba(49,116,125,0.25), 0 0 0 100vw rgba(47,58,61,0.25);
+    background: #fff;
+    cursor: zoom-out;
+    /* transition já está herdada */
+}
+
+/* Estado inicial para animação de zoom */
+.section:not(.expanded) {
+    transform: scale(1);
+}
+
+/* Opcional: impede scroll do body quando uma section está expandida */
+body.section-expanded {
+    overflow: hidden;
+}
+
+.footer {
+    flex-shrink: 0;
+    background: #31747D;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    height: 40px;
+    width: 100%;
+    margin-top: auto;
+}
+.footer_link {
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+.links {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+.links:hover {
+    background: #F4C542; /* Amarelo Dourado */
+    color: #2F3A3D;      /* Cinza Escuro */
+}
+#lg_top {
+    width: 64px;
+    height: 64px;
+    margin-left: 30px;
+    border-radius: 12px;
+    background: #fff;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.10);
+}
+#login_bt {
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 8px 16px;
+    background: #F4C542; /* Amarelo Dourado */
+    color: #2F3A3D;      /* Cinza Escuro */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+    margin-left: 10px;
+}
+#login_bt:hover {
+    background: #31747D; /* Azul Petróleo */
+    color: #fff;
+}
+
+#icon_top {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    border-radius: 100px;
+    border: #fff solid 2px;
+    background: #fff;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.10);
+}
+#links_top {
+    display: flex;
+    align-items: center;
+    margin-left: 400px;
+}
+
+#search_bar {
+    background-color: #F4C542;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.05);
+    margin-top: 32px;
+    margin-bottom: 32px;
+    border-radius: 12px;
+    width:1500px;
+    max-width: 1200px;
+}
+
+#search_bar button#search_button:hover {
+    background: #F4C542;
+    color: #2F3A3D;
+}
+
+#search_bar_title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #31747D;
+    margin-right: 12px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+    #search_bar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px 8px;
+    }
+    #search_bar input,
+    #search_bar button#search_button {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+    #search_bar_title {
+        margin-right: 0;
+        margin-bottom: 6px;
+    }
+}
+
+/* Novo sistema: blur no fundo da tela quando uma section está expandida */
+.blur-overlay {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    background: rgba(255, 255, 255, 0.39); /* cor neutra da paleta, levemente opaca */
+    backdrop-filter: blur(2px);
+    pointer-events: none;
+    transition: backdrop-filter 0.3s;
+}
+
+.arrow-btn {
+    position: absolute;
+    top: 24px; /* Canto superior */
+    background: rgba(49,116,125,0.85);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 20; /* Aumentado para garantir que fique acima do side-content */
+    opacity: 0.85;
+    transition: background 0.2s, opacity 0.2s;
+    display: none; /* Controlado via JS */
+}
+.arrow-btn:hover {
+    background: #F4C542;
+    color: #2F3A3D;
+    opacity: 1;
+}
+.left-arrow {
+    left: 24px;
+    z-index: 30; /* Garante que fique acima do side-content */
+}
+.right-arrow {
+    right: 24px;
+    z-index: 20;
+}
+.section-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: rgba(47, 58, 61, 0.45); /* fundo escuro translúcido */
+    border-radius: 10px;
+    padding: 12px 16px 16px 16px;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.4;
+    min-height: 90px;
+    margin: 0 0 8px 0;
+}
+
+.city-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.city-desc {
+    font-size: 0.98em;
+    color: #E6EEF0;
+    margin-bottom: 8px;
+}
+
+.search_input {
+    width: 150px;
+    height: 30px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.10);
+    transition: box-shadow 0.3s;
+}
+#search_input:focus {
+    box-shadow: 0 2px 8px rgba(49,116,125,0.25);
+    outline: none;
+}
+#date_input {
+    width: 150px;
+    height: 30px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(49,116,125,0.10);
+    transition: box-shadow 0.3s;
+}
+#date_input:focus {
+    box-shadow: 0 2px 8px rgba(49,116,125,0.25);
+    outline: none;
+}
+
+#search_button {
+    padding: 8px 16px;
+    background: #31747D; /* Azul Petróleo */
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+}
+#search_button:hover {
+    background: #F4C542; /* Amarelo Dourado */
+    color: #2F3A3D;      /* Cinza Escuro */
+}
+
+/* Quadrado lateral para conteúdo na section expandida */
+.section.expanded .side-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32%;
+    height: 100%;
+    background: rgba(230,238,240,0.97); /* Cinza azulado claro */
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 32px 24px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 12px rgba(49,116,125,0.08);
+    overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+    .section.expanded .side-content {
+        width: 100%;
+        height: 40%;
+        left: 0;
+        top: 0;
+        border-radius: 12px 12px 0 0;
+    }
+}
+
+/* Estilos para os botões de rolagem */
+.scroll-btn {
+    background: #31747D; /* Azul Petróleo */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin: 16px 0;
+    transition: background 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+}
+.scroll-btn:hover {
+    background: #F4C542; /* Amarelo Dourado */
+    color: #2F3A3D;      /* Cinza Escuro */
+}
+.scroll-btn-left {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.scroll-btn-right {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.stars-rating {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 160px;
+    gap: 2px;
+    background: #fff;
+    padding: 2px 10px;         /* padding vertical reduzido */
+    border-radius: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: #F4C542;
+    font-size: 1.3em;
+}
+.stars-rating .star-empty {
+    color: #ccc;
+}
+.stars-rating .star-score {
+    color: #2F3A3D;
+    font-size: 0.9em;
+    margin-left: 8px;
+}
+
+/* Adicione ao seu index.css */
+
+.sub-sections-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin-top: 12px; /* Reduzido de 32px para 12px */
+    flex-wrap: wrap;
+}
+
+.sub-section {
+    width: 48%; /* metade da largura de uma section normal (ajuste conforme seu .section) */
+    min-width: 180px;
+    max-width: 220px;
+    background: #A8D5BA;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(49,116,125,0.07);
+    padding: 14px 12px 12px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #2F3A3D;
+    font-size: 1em;
+    position: relative;
+}
+
+.sub-section-title {
+    font-weight: bold;
+    font-size: 1.05em;
+    color: #31747D;
+}
+
+.sub-section-desc {
+    font-size: 0.97em;
+    color: #2F3A3D;
+    margin-bottom: 6px;
+}
+
+.user-review {
+    margin-top: 8px;
+    font-size: 0.96em;
+    color: #2F3A3D;
+    background: #fff;
+    border-radius: 6px;
+    padding: 6px 10px;
+    box-shadow: 0 1px 3px rgba(49,116,125,0.06);
+    font-style: italic;
+}
+
+/* Responsivo para telas pequenas */
+@media (max-width: 900px) {
+    .sub-section {
+        width: 98%;
+        max-width: 100%;
+    }
+    .sub-sections-row {
+        gap: 12px;
+    }
+}

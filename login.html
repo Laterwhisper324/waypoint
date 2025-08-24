@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WayPoint - Login</title>
+    <link rel="stylesheet" href="login_style.css">
+</head>
+<body>
+    <div class="login-container">
+        <header class="topbar">
+            <img src="logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
+            <div id="links_top">
+                <div id="links-container">
+                    <a href="main.html" class="links">Início</a>
+                    <a href="#" class="links">Passagens</a>
+                    <a href="#" class="links">Descobrir</a>
+                    <a href="#" class="links">Contato</a>
+                </div>
+            </div>
+        </header>
+        <main class="login-main">
+            <form class="login-box" id="loginForm" autocomplete="off">
+                <div class="login-title">Entrar no WayPoint</div>
+                <label class="login-label" for="login-email">E-mail</label>
+                <input class="login-input" type="email" id="login-email" name="email" placeholder="seu@email.com" required>
+                <label class="login-label" for="login-password">Senha</label>
+                <input class="login-input" type="password" id="login-password" name="password" placeholder="Sua senha" required>
+                <button class="login-btn" type="submit">Entrar</button>
+                <div class="login-footer">
+                    Não tem conta? <a href="cadastro.html" >Cadastre-se</a>
+                </div>
+            </form>
+        </main>
+        <footer class="footer">
+            &copy; 2025 WayPoint. Todos os direitos reservados.
+        </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        const email = $('#login-email').val();
+        const senha = $('#login-password').val();
+        $.post('/login', { email, senha }, function(res) {
+            if (res.sucesso) {
+                localStorage.setItem('usuario_nome', res.nome);
+                localStorage.setItem('usuario_email', email); // <-- Adicione esta linha!
+                window.location.href = "main.html";
+            } else {
+                alert(res.mensagem);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
