@@ -100,7 +100,6 @@ body{
 #links-container {
     display: flex;
     justify-content: center;
-    margin-top: 120px;
 }
 .links:hover {
     background: #F4C542; /* Amarelo Dourado */

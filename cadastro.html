@@ -9,9 +9,9 @@
 <body>
     <div class="cadastro-container">
         <header class="topbar">
-            <img src="../logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
+            <img src="imagens/logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
             <div id="links-container">
-                <a href="../index.html" class="links">Início</a>
+                <a href="index.html" class="links">Início</a>
                 <a href="#" class="links">Passagens</a>
                 <a href="#" class="links">Descobrir</a>
                 <a href="#" class="links">Contato</a>
@@ -39,22 +39,43 @@
         </footer>
     </div>
     <script>
-        // Supondo que você tenha acesso ao email e senha aqui
-        const email = 'exemplo@email.com';
-        const senha = 'senhaSecreta';
+        // Cadastro sem restrições
+        app.post('/cadastro', (req, res) => {
+            const { nome, email, senha } = req.body;
+            const linha = `Nome: ${nome} | Email: ${email} | Senha: ${senha}\n`;
+            const filePath = path.join(__dirname, 'cadastros-feitos');
 
-        // Simulando a linha que conteria os dados do usuário
-        const linha = 'Nome: Usuário Exemplo | Email: exemplo@email.com | Senha: senhaSecreta';
+            fs.appendFile(filePath, linha, (err) => {
+                if (err) {
+                    return res.status(500).send('Erro ao salvar cadastro.');
+                }
+                res.send('<h2>Cadastro realizado com sucesso!</h2><a href="cadastro.html">Voltar</a>');
+            });
+        });
 
-        const partes = linha.split('|').map(p => p.trim());
-        if (partes.length === 3) {
-            const nomeArq = partes[0].replace('Nome:', '').trim();
-            const emailArq = partes[1].replace('Email:', '').trim();
-            const senhaArq = partes[2].replace('Senha:', '').trim();
-            if (emailArq === email && senhaArq === senha) {
-                return res.send({ sucesso: true, nome: nomeArq });
-            }
-        }
+        // Login sem restrições (apenas verifica se existe a combinação)
+        app.post('/login', (req, res) => {
+            const { email, senha } = req.body;
+            const filePath = path.join(__dirname, 'cadastros-feitos');
+
+            fs.readFile(filePath, 'utf8', (err, data) => {
+                if (err || !data) {
+                    return res.status(500).send('Erro ao acessar cadastros.');
+                }
+                const linhas = data.split('\n');
+                for (const linha of linhas) {
+                    if (linha.includes(`Email: ${email}`) && linha.includes(`Senha: ${senha}`)) {
+                        // Extrai o nome do usuário
+                        const nomeMatch = linha.match(/Nome:\s*([^|]+)/);
+                        const nome = nomeMatch ? nomeMatch[1].trim() : 'Usuário';
+                        return res.send({ sucesso: true, nome });
+                    }
+                }
+                res.send({ sucesso: false, mensagem: 'E-mail ou senha incorretos.' });
+            });
+        });
+
+        window.location.href = "index.html";
     </script>
     <script href="server.js"></script>
 </body>

@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WayPoint</title>
+    <link rel="icon" type="image/png" href="logo_waypoint.png">
     <link rel="stylesheet" href="index.css">
     <!--
         Grid Layout:
@@ -19,14 +20,14 @@
     <div class="container">
         <header class="topbar">
             <!-- Topbar: 80px height -->
-            <img src="logo_waypoint.png" alt="" id="lg_top">
+            <img src="imagens/logo_waypoint.png" alt="" id="lg_top">
             <div id="links_top">
-                <a href="" class="links">viajens</a>
-                <a href="" class="links">passagens</a>
-                <a href="" class="links">descobrir</a>
-                <a href="" class="links">contato</a>
+                <a href="index.html" class="links">viajens</a>
+                <a href="anothes_pages/passagens.html" class="links">passagens</a>
+                <a href="anothes_pages/serviços.html" class="links">Serviços</a>
+                <a href="anothes_pages/contato.html" class="links">contato</a>
             </div>
-            <img src="icone.png" alt="" id="icon_top">
+            <img src="imagens/icone.png" alt="" id="icon_top">
             <form action="login.html">
             <button id="login_bt">login</button>
             </form>
@@ -45,11 +46,15 @@
             <!-- Centraliza o grid 3x3 -->
             <button id="scroll-left" class="scroll-btn scroll-btn-left">&#8592;</button>
             <div class="grid-3x3">
+                <!-- Ilha de Marajó -->
                 <div id="section1" class="section bg1">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Ilha de Marajó</h3>
+                        <p>
+                            A Ilha de Marajó, localizada no Pará, é a maior ilha fluviomarinha do mundo. Conhecida por sua rica cultura marajoara, búfalos e paisagens naturais únicas, foi habitada por povos indígenas há milhares de anos e preserva tradições e culinária típicas da região amazônica.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">ILHA DE MARAJÓ</span><br>
@@ -62,11 +67,16 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+
+                <!-- Praia do Forte -->
                 <div id="section2" class="section bg2">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Praia do Forte</h3>
+                        <p>
+                            Praia do Forte, na Bahia, é famosa por suas praias de águas cristalinas, projetos de preservação das tartarugas marinhas e o charmoso vilarejo. O local tem origem em uma antiga vila de pescadores e hoje é um dos destinos turísticos mais procurados do litoral baiano.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">PRAIA DO FORTE</span><br>
@@ -79,11 +89,16 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+
+                <!-- Bonito -->
                 <div id="section3" class="section bg3">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Bonito</h3>
+                        <p>
+                            Bonito, no Mato Grosso do Sul, é referência em ecoturismo no Brasil. Suas águas cristalinas, grutas, cachoeiras e trilhas atraem turistas do mundo todo. A cidade se desenvolveu a partir de pequenas fazendas e hoje é modelo de turismo sustentável.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">BONITO</span><br>
@@ -96,11 +111,16 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+
+                <!-- Gramado -->
                 <div id="section4" class="section bg4">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Gramado</h3>
+                        <p>
+                            Gramado, no Rio Grande do Sul, foi colonizada por imigrantes europeus e é famosa pelo clima frio, arquitetura charmosa e eventos como o Natal Luz. Destino turístico de inverno, destaca-se pela gastronomia, chocolates e paisagens serranas.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">GRAMADO</span><br>
@@ -113,11 +133,15 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+                <!-- Jericoacoara -->
                 <div id="section5" class="section bg5">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Jericoacoara</h3>
+                        <p>
+                            Jericoacoara, no Ceará, era uma vila de pescadores isolada até os anos 80. Hoje é famosa por suas dunas, lagoas de águas cristalinas e o pôr do sol inesquecível. O acesso difícil ajudou a preservar sua natureza e charme rústico.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">JERICOACOARA</span><br>
@@ -130,11 +154,15 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+                <!-- Ouro Preto -->
                 <div id="section6" class="section bg6">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Ouro Preto</h3>
+                        <p>
+                            Ouro Preto, em Minas Gerais, foi o principal centro da corrida do ouro no Brasil colonial. Seu centro histórico é Patrimônio Mundial da UNESCO, com igrejas barrocas, ladeiras de pedra e rica herança cultural.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">OURO PRETO</span><br>
@@ -147,11 +175,15 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+                <!-- Lençóis Maranhenses -->
                 <div id="section7" class="section bg7">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Lençóis Maranhenses</h3>
+                        <p>
+                            O Parque Nacional dos Lençóis Maranhenses, no Maranhão, é famoso por suas dunas de areia branca e lagoas de água doce formadas pelas chuvas. É um dos cenários naturais mais impressionantes do Brasil, atraindo aventureiros e amantes da natureza.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">LENÇÓIS MARANHENSES</span><br>
@@ -164,11 +196,15 @@
                     </span>
                     <button class="arrow-btn right-arrow">&#8594;</button>
                 </div>
+                <!-- Foz do Iguaçu -->
                 <div id="section8" class="section bg8">
                     <button class="arrow-btn left-arrow" style="display:none;">&#8592;</button>
                     <div class="side-content" style="display:none;">
-                        <h3>Informações</h3>
-                        <p>Conteúdo extra, descrição, botões, etc.</p>
+                        <h3>Foz do Iguaçu</h3>
+                        <p>
+                            Foz do Iguaçu, no Paraná, abriga as famosas Cataratas do Iguaçu, uma das maiores quedas d'água do mundo. A cidade é um importante polo turístico, também conhecida pela Usina de Itaipu e pela tríplice fronteira com Argentina e Paraguai.
+                        </p>
+                        <a class="reservar-btn" href="anothes_pages/reserva.html">Reservar</a>
                     </div>
                     <span class="section-content">
                         <span class="city-title">FOZ DO IGUAÇU</span><br>
@@ -331,60 +367,54 @@
 <script>
 $(document).ready(function() {
     const nome = localStorage.getItem('usuario_nome');
-    const email = localStorage.getItem('usuario_email');
-
     if (nome) {
-        // Mostra o nome e ativa o sistema de imagem
-        $('#icon_top').before('<span id="usuario_nome" style="margin-left:300px;color:#fff;font-weight:bold;">' + nome + '</span>');
-        $('#login_bt').hide(); // Esconde o botão de login
+        // Mostra o nome do usuário e ativa o sistema de imagem
+        $('#icon_top').before('<span id="usuario_nome" style="margin-left:300px;color:#2F3A3D;font-weight:bold;">' + nome + '</span>');
 
-        // Adiciona botão de deslogar ao lado do nome do usuário
-        $('#usuario_nome').after('<button id="logout_bt" style="margin-left:15px; background:#F4C542; color:#2F3A3D; border:none; border-radius:6px; padding:6px 14px; font-weight:bold; cursor:pointer;">Sair</button>');
-
-        // Evento de deslogar
-        $('#logout_bt').on('click', function() {
-            localStorage.removeItem('usuario_nome');
-            localStorage.removeItem('usuario_email');
-            window.location.href = "login.html";
-        });
-
-        // Ao carregar, se houver email, carrega a imagem do servidor
-        if (email) {
-            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email));
-        }
-
+        // Sistema de imagem do ícone
         $('#icon_top').css('cursor', 'pointer').on('click', function(e) {
+            // Remove popup anterior se existir
             $('#user-popup').remove();
+
+            // Cria o popup com upload de imagem
             const popup = $(`
-                <div id="user-popup" style="position: absolute; top: 70px; right: 40px; background: #fff; border-radius: 12px; box-shadow: 0 4px 24px rgba(49,116,125,0.15); padding: 24px 20px 18px 20px; z-index: 9999; min-width: 220px; display: flex; flex-direction: column; gap: 10px;">
+                <div id="user-popup" style="
+                    position: absolute;
+                    top: 70px;
+                    right: 40px;
+                    background: #fff;
+                    border-radius: 12px;
+                    margin-left: 20px;
+                    box-shadow: 0 4px 24px rgba(49,116,125,0.15);
+                    padding: 24px 20px 18px 20px;
+                    z-index: 9999;
+                    min-width: 220px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    position: fixed;
+                ">
                     <label style="font-size:0.97em; color:#31747D; font-weight:500; margin-bottom:2px;">Alterar imagem:</label>
                     <input type="file" accept="image/*" id="icon_upload" style="padding:4px 0;">
+                    <input type="text" placeholder="Campo 2" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
+                    <input type="text" placeholder="Campo 3" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
                     <button id="close-popup" style="margin-top:8px; background:#31747D; color:#fff; border:none; border-radius:6px; padding:7px 0; font-weight:bold; cursor:pointer;">Fechar</button>
                 </div>
             `);
+
             $('body').append(popup);
 
-            // Upload da imagem para o servidor
+            // Troca e salva a imagem do ícone ao selecionar uma imagem
             $('#icon_upload').on('change', function(event) {
                 const file = event.target.files[0];
-                if (file && email) {
-                    const formData = new FormData();
-                    formData.append('icon', file);
-                    formData.append('email', email);
-                    $.ajax({
-                        url: '/upload_icon',
-                        type: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function(res) {
-                            // Atualiza o ícone após upload
-                            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email) + '?t=' + Date.now());
-                        },
-                        error: function() {
-                            alert('Erro ao enviar imagem.');
-                        }
-                    });
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#icon_top').attr('src', e.target.result);
+                        // Salva a imagem no localStorage para a conta
+                        localStorage.setItem('usuario_icon_' + nome, e.target.result);
+                    };
+                    reader.readAsDataURL(file);
                 }
             });
 
@@ -404,10 +434,17 @@ $(document).ready(function() {
             e.stopPropagation();
         });
 
-        // Ao carregar, se houver email, carrega a imagem do servidor
-        if (email) {
-            $('#icon_top').attr('src', '/user_icon/' + encodeURIComponent(email));
+        // Ao carregar a página, carrega a imagem salva para o usuário, se existir
+        const savedIcon = localStorage.getItem('usuario_icon_' + nome);
+        if (savedIcon) {
+            $('#icon_top').attr('src', savedIcon);
         }
+    } else {
+        // Se não estiver logado, mostra o botão de login
+        $('#login_bt').show();
+        // Remove nome e botão de logout se existirem
+        $('#usuario_nome').remove();
+        $('#logout_bt').remove();
     }
 
     function expandSection($section) {
@@ -520,7 +557,7 @@ $(document).ready(function() {
     updateSideContent();
 
     // Busca por cidade/local ao clicar no botão pesquisar
-    $('#search_button').click(function(e) {
+    $('#search_button').clicko(function(e) {
         e.preventDefault();
         const termo = $('.search_input').eq(1).val().trim().toLowerCase(); // Agora pega o input de destino corretamente
         const $sections = $('.grid-3x3 .section');
@@ -560,69 +597,8 @@ $(document).ready(function() {
             $('#search_button').click();
         }
     });
-
-    // Adiciona o popup de inputs ao clicar no icon_top
-    $('#icon_top').css('cursor', 'pointer').on('click', function(e) {
-        // Remove popup anterior se existir
-        $('#user-popup').remove();
-
-        // Cria o popup com o primeiro input sendo um upload de imagem
-        const popup = $(`
-            <div id="user-popup" style="
-                position: absolute;
-                top: 70px;
-                right: 40px;
-                background: #fff;
-                border-radius: 12px;
-                box-shadow: 0 4px 24px rgba(49,116,125,0.15);
-                padding: 24px 20px 18px 20px;
-                z-index: 9999;
-                min-width: 220px;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            ">
-                <label style="font-size:0.97em; color:#31747D; font-weight:500; margin-bottom:2px;">Alterar imagem:</label>
-                <input type="file" accept="image/*" id="icon_upload" style="padding:4px 0;">
-                <input type="text" placeholder="Campo 2" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
-                <input type="text" placeholder="Campo 3" class="popup-input" style="padding:8px 10px; border-radius:6px; border:1.5px solid #A8D5BA;">
-                <button id="close-popup" style="margin-top:8px; background:#31747D; color:#fff; border:none; border-radius:6px; padding:7px 0; font-weight:bold; cursor:pointer;">Fechar</button>
-            </div>
-        `);
-
-        // Adiciona o popup ao body
-        $('body').append(popup);
-
-        // Troca a imagem do icon_top ao selecionar uma imagem
-        $('#icon_upload').on('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#icon_top').attr('src', e.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Fecha ao clicar no botão
-        $('#close-popup').on('click', function() {
-            $('#user-popup').remove();
-        });
-
-        // Fecha ao clicar fora do popup
-        setTimeout(function() {
-            $(document).on('mousedown.userpopup', function(ev) {
-                if (!$(ev.target).closest('#user-popup, #icon_top').length) {
-                    $('#user-popup').remove();
-                    $(document).off('mousedown.userpopup');
-                }
-            });
-        }, 100);
-
-        e.stopPropagation();
-    });
-
+    // Formulário de login
+    
     $('#loginForm').on('submit', function(e) {
         e.preventDefault();
         const email = $('#login-email').val();
@@ -631,7 +607,7 @@ $(document).ready(function() {
             if (res.sucesso) {
                 localStorage.setItem('usuario_nome', res.nome);
                 localStorage.setItem('usuario_email', email); // ESSENCIAL!
-                window.location.href = "main.html";
+                window.location.href = "index.html";
             } else {
                 alert(res.mensagem);
             }

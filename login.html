@@ -9,10 +9,10 @@
 <body>
     <div class="login-container">
         <header class="topbar">
-            <img src="logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
+            <img src="imagens/logo_waypoint.png" alt="WayPoint Logo" id="lg_top">
             <div id="links_top">
                 <div id="links-container">
-                    <a href="main.html" class="links">Início</a>
+                    <a href="index.html" class="links">Início</a>
                     <a href="#" class="links">Passagens</a>
                     <a href="#" class="links">Descobrir</a>
                     <a href="#" class="links">Contato</a>
@@ -46,12 +46,13 @@
             if (res.sucesso) {
                 localStorage.setItem('usuario_nome', res.nome);
                 localStorage.setItem('usuario_email', email); // <-- Adicione esta linha!
-                window.location.href = "main.html";
+                window.location.href = "index.html";
             } else {
                 alert(res.mensagem);
             }
         });
     });
     </script>
+    <script href="server.js"></script>
 </body>
 </html>

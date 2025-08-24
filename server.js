@@ -23,22 +23,54 @@ app.use(express.static(__dirname));
 
 // Rota para upload de imagem de usuário
 app.post('/upload_icon', upload.single('icon'), (req, res) => {
+    console.log('UPLOAD:', req.body, req.file); // <-- Adicione esta linha!
     if (!req.file || !req.body.email) {
         return res.status(400).send('Faltando arquivo ou email.');
     }
-    res.send({ sucesso: true, filename: req.file.filename });
+    const filePath = path.join(__dirname, 'cadastros-feitos');
+    const email = req.body.email;
+    const imgPath = `user_icons/${email.replace(/[^a-zA-Z0-9]/g, '_')}${path.extname(req.file.originalname)}`;
+
+    // Atualiza a linha do usuário no arquivo de cadastros
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) return res.status(500).send('Erro ao atualizar cadastro.');
+        const linhas = data.split('\n').map(linha => {
+            if (linha.includes(`Email: ${email}`)) {
+                // Atualiza ou adiciona o campo Imagem
+                if (linha.includes('Imagem:')) {
+                    return linha.replace(/Imagem: .*/, `Imagem: ${imgPath}`);
+                } else {
+                    return linha + ` | Imagem: ${imgPath}`;
+                }
+            }
+            return linha;
+        });
+        fs.writeFile(filePath, linhas.join('\n'), err2 => {
+            if (err2) return res.status(500).send('Erro ao atualizar cadastro.');
+            res.send({ sucesso: true, filename: req.file.filename, imgPath });
+        });
+    });
 });
 
 // Rota para buscar imagem do usuário
 app.get('/user_icon/:email', (req, res) => {
-    const email = req.params.email.replace(/[^a-zA-Z0-9]/g, '_');
-    const files = fs.readdirSync(uploadDir);
-    const found = files.find(f => f.startsWith(email));
-    if (found) {
-        res.sendFile(path.join(uploadDir, found));
-    } else {
-        res.sendFile(path.join(__dirname, 'icone.png')); // Usa seu icone.png como padrão
-    }
+    const email = req.params.email;
+    const filePath = path.join(__dirname, 'cadastros-feitos');
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err || !data) {
+            return res.sendFile(path.join(__dirname, 'icone.png'));
+        }
+        const linhas = data.split('\n');
+        for (const linha of linhas) {
+            if (linha.includes(`Email: ${email}`)) {
+                const imgMatch = linha.match(/Imagem:\s*([^\s|]+)/);
+                if (imgMatch && fs.existsSync(path.join(__dirname, imgMatch[1]))) {
+                    return res.sendFile(path.join(__dirname, imgMatch[1]));
+                }
+            }
+        }
+        res.sendFile(path.join(__dirname, 'icone.png'));
+    });
 });
 
 // Rota para receber o cadastro
@@ -66,6 +98,9 @@ app.post('/cadastro', (req, res) => {
         return res.status(400).send('Senha fraca. Use pelo menos 6 caracteres.');
     }
 
+    // Caminho padrão da imagem (pode ser atualizado depois do upload)
+    const imgPath = `user_icons/${email.replace(/[^a-zA-Z0-9]/g, '_')}.png`;
+
     // Lê o arquivo de cadastros para verificar e-mail e senha repetidos
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (!err && data) {
@@ -74,15 +109,14 @@ app.post('/cadastro', (req, res) => {
                 if (linha.includes(`Email: ${email} `)) {
                     return res.status(400).send('E-mail já usado.');
                 }
-                // Opcional: verifica se a senha já foi usada (não recomendado em produção)
                 if (linha.includes(`Senha: ${senha}`)) {
                     return res.status(400).send('Senha fraca ou já utilizada. Escolha outra senha.');
                 }
             }
         }
 
-        // Se passou por todas as validações, salva o cadastro
-        const linha = `Nome: ${nome} | Email: ${email} | Senha: ${senha}\n`;
+        // Agora salva o caminho da imagem junto
+        const linha = `Nome: ${nome} | Email: ${email} | Senha: ${senha} | Imagem: ${imgPath}\n`;
         fs.appendFile(filePath, linha, (err) => {
             if (err) {
                 return res.status(500).send('Erro ao salvar cadastro.');
@@ -105,7 +139,7 @@ app.post('/login', (req, res) => {
         for (const linha of linhas) {
             // Procura por email e senha na linha
             const partes = linha.split('|').map(p => p.trim());
-            if (partes.length === 3) {
+            if (partes.length >= 3) {
                 const nomeArq = partes[0].replace('Nome:', '').trim();
                 const emailArq = partes[1].replace('Email:', '').trim();
                 const senhaArq = partes[2].replace('Senha:', '').trim();

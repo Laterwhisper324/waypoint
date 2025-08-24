@@ -1,3 +1,7 @@
+body{
+    padding: 0;
+    margin: 0;
+}
 .cadastro-container {
     min-height: 100vh;
     display: flex;
@@ -96,21 +100,15 @@
 #links-container {
     display: flex;
     justify-content: center;
-    margin-top: 120px;
     margin-bottom: 10px;
 }
 .links:hover {
     background: #F4C542; /* Amarelo Dourado */
     color: #2F3A3D;      /* Cinza Escuro */
 }
-#lg_top {
-    width: 64px;
-    height: 64px;
-    margin-right: 24px;
-    border-radius: 12px;
-    background: #fff;
-    object-fit: contain;
-    box-shadow: 0 2px 8px rgba(49,116,125,0.10);
+#lg_top{
+    width: 80px;
+    margin-bottom: 20px;
 }
 @media (max-width: 500px) {
     .cadastro-box {
