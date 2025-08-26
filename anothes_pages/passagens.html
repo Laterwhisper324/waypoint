@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacotes de Viagem</title>
+    <link rel="stylesheet" href="passagens_style.css">
+    <style>
+        body {
+            background: #E6EEF0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .pacotes-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(49,116,125,0.10);
+            padding: 32px 28px;
+        }
+        .pacotes-title {
+            color: #31747D;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .pacotes-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .pacote-card {
+            background: #F8FAFA;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0001;
+            width: 300px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s;
+        }
+        .pacote-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px #0002;
+        }
+        .pacote-img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+        .pacote-info {
+            padding: 18px 16px 14px 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .pacote-cidade {
+            color: #31747D;
+            font-size: 1.25em;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .pacote-desc {
+            color: #2F3A3D;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .pacote-detalhes {
+            color: #555;
+            font-size: 0.98em;
+            margin-bottom: 8px;
+        }
+        .pacote-preco {
+            color: #F4C542;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 6px;
+        }
+        .pacote-caminho {
+            color: #31747D;
+            font-size: 0.97em;
+            margin-bottom: 0;
+        }
+        @media (max-width: 900px) {
+            .pacotes-grid {
+                gap: 18px;
+            }
+            .pacote-card {
+                width: 95vw;
+                max-width: 340px;
+            }
+        }
+             #reserva-voltar {
+            margin-top: 20px;
+            margin-left: 20px;
+            color: #fff;
+            background-color: #31747D;
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        #reserva-voltar:hover {
+            transition: 0.3s;
+            background: #F4C542; /* Amarelo Dourado */
+            color: #2F3A3D;      /* Cinza Escuro */
+        }
+        #reserva-voltar:not(:hover) {
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" id="reserva-voltar">← Voltar</a>
+    <div class="pacotes-container">
+        <div class="pacotes-title">Pacotes de Viagem</div>
+        <div class="pacotes-grid">
+            <!-- Exemplo de pacote -->
+            <div class="pacote-card">
+                <img src="/imagens/bela-foto-de-colinas-gramadas-cobertas-por-arvores-perto-de-montanhas-nas-dolomitas-italia.jpg" alt="Ilha de Marajó" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Ilha de Marajó</div>
+                        <div class="pacote-desc">Explore a maior ilha fluviomarinha do mundo, com cultura única e paisagens naturais incríveis.</div>
+                        <div class="pacote-detalhes">Para até 4 pessoas &bull; 7 dias &bull; Café da manhã incluso</div>
+                        <div class="pacote-preco">R$ 4.200 - R$ 5.500</div>
+                        <div class="pacote-caminho">Belém &rarr; Ilha de Marajó</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/cascata-barco-limpo-china-natural-rural.jpg" alt="Praia do Forte" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Praia do Forte</div>
+                        <div class="pacote-desc">Pacote para curtir praias cristalinas, vilarejo charmoso e o Projeto Tamar.</div>
+                        <div class="pacote-detalhes">Para até 2 pessoas &bull; 5 dias &bull; Passeios inclusos</div>
+                        <div class="pacote-preco">R$ 2.800 - R$ 3.600</div>
+                        <div class="pacote-caminho">Salvador &rarr; Praia do Forte</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-sol.jpg" alt="Bonito" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Bonito</div>
+                        <div class="pacote-desc">Mergulhe em rios cristalinos, visite grutas e cachoeiras em um dos melhores destinos de ecoturismo do Brasil.</div>
+                        <div class="pacote-detalhes">Para até 3 pessoas &bull; 6 dias &bull; Passeios guiados</div>
+                        <div class="pacote-preco">R$ 3.900 - R$ 5.000</div>
+                        <div class="pacote-caminho">Campo Grande &rarr; Bonito</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/pexels-souvenirpixels-1619317.jpg" alt="Gramado" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Gramado</div>
+                        <div class="pacote-desc">Aproveite o clima europeu, gastronomia e eventos culturais em um dos destinos mais charmosos do Brasil.</div>
+                        <div class="pacote-detalhes">Para até 2 pessoas &bull; 4 dias &bull; City tour incluso</div>
+                        <div class="pacote-preco">R$ 2.500 - R$ 3.200</div>
+                        <div class="pacote-caminho">Porto Alegre &rarr; Gramado</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/pexels-alexandre-saraiva-carniato-583650-2258349.jpg" alt="Jericoacoara" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Jericoacoara</div>
+                        <div class="pacote-desc">Dunas, lagoas e pôr do sol inesquecível em um dos destinos mais desejados do Ceará.</div>
+                        <div class="pacote-detalhes">Para até 2 pessoas &bull; 5 dias &bull; Passeio de buggy incluso</div>
+                        <div class="pacote-preco">R$ 3.200 - R$ 4.100</div>
+                        <div class="pacote-caminho">Fortaleza &rarr; Jericoacoara</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/pexels-tobiasbjorkli-1559821.jpg" alt="Ouro Preto" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Ouro Preto</div>
+                        <div class="pacote-desc">Descubra a história e arquitetura colonial em uma cidade Patrimônio Mundial da UNESCO.</div>
+                        <div class="pacote-detalhes">Para até 3 pessoas &bull; 4 dias &bull; Tour histórico incluso</div>
+                        <div class="pacote-preco">R$ 2.100 - R$ 2.900</div>
+                        <div class="pacote-caminho">Belo Horizonte &rarr; Ouro Preto</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="/imagens/pexels-magda-ehlers-pexels-2566553.jpg" alt="Lençóis Maranhenses" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Lençóis Maranhenses</div>
+                        <div class="pacote-desc">Explore dunas e lagoas de tirar o fôlego no Maranhão, com passeios de 4x4 e trilhas.</div>
+                        <div class="pacote-detalhes">Para até 4 pessoas &bull; 6 dias &bull; Passeios inclusos</div>
+                        <div class="pacote-preco">R$ 4.800 - R$ 6.200</div>
+                        <div class="pacote-caminho">São Luís &rarr; Barreirinhas &rarr; Lençóis</div>
+                    </div>
+                </div>
+            </div>
+            <div class="pacote-card">
+                <img src="../imagens/imagem_8.jpg" alt="Foz do Iguaçu" class="pacote-img">
+                <div class="pacote-info">
+                    <div>
+                        <div class="pacote-cidade">Foz do Iguaçu</div>
+                        <div class="pacote-desc">Visite as famosas cataratas, o Parque das Aves e a tríplice fronteira.</div>
+                        <div class="pacote-detalhes">Para até 3 pessoas &bull; 5 dias &bull; Ingressos inclusos</div>
+                        <div class="pacote-preco">R$ 3.600 - R$ 4.700</div>
+                        <div class="pacote-caminho">Curitiba &rarr; Foz do Iguaçu</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Adicione mais pacotes conforme desejar -->
+        </div>
+    </div>
+</body>
+</html>

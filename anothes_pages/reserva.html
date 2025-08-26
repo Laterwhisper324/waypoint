@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva de Viagem</title>
+    <link rel="stylesheet" href="reserva.css">
+</head>
+<body>
+    <div class="reserva-container">
+        <header class="reserva-header">
+            <a href="../index.html" id="reserva-voltar">← Voltar</a>
+            <h2>Reserva de Viagem</h2>
+        </header>
+        <main class="reserva-main">
+            <div class="reserva-foto-info">
+                <img id="reserva-img" src="../imagens/imagem_1.jpg" alt="Destino" class="reserva-img">
+                <div class="reserva-info">
+                    <h3 id="reserva-cidade">Ilha de Marajó</h3>
+                    <p id="reserva-desc">Pará, natureza selvagem e cultura única.<br>
+                    A Ilha de Marajó é a maior ilha fluviomarinha do mundo, famosa por sua cultura, búfalos e paisagens naturais.</p>
+                </div>
+            </div>
+            <form class="reserva-form">
+                <label for="data">Data de Decolagem:</label>
+                <input type="date" id="data" name="data" required>
+
+                <label for="pessoas">Quantidade de pessoas:</label>
+                <input type="number" id="pessoas" name="pessoas" min="1" max="10" value="1" required>
+
+                <label for="pagamento">Forma de pagamento:</label>
+                <select id="pagamento" name="pagamento" required>
+                    <option value="">Selecione</option>
+                    <option value="pix">Pix</option>
+                    <option value="debito">Cartão de Débito</option>
+                    <option value="credito">Cartão de Crédito</option>
+                </select>
+
+                <label>Classe de voo:</label>
+                <div class="classe-voo">
+                    <label><input type="radio" name="classe" value="economica" checked> Econômica</label>
+                    <label><input type="radio" name="classe" value="executiva"> Executiva</label>
+                    <label><input type="radio" name="classe" value="primeira"> Primeira Classe</label>
+                </div>
+
+                <button type="submit" class="btn-reservar">Confirmar Reserva</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Atualiza imagem, nome e descrição do local
+    let imgPath = localStorage.getItem('reserva_img') || '../imagens/imagem_1.jpg';
+    if (!imgPath.startsWith('..')) imgPath = '../' + imgPath;
+    document.getElementById('reserva-img').src = imgPath;
+    document.getElementById('reserva-cidade').textContent = localStorage.getItem('reserva_nome') || 'Ilha de Marajó';
+    document.getElementById('reserva-desc').textContent = localStorage.getItem('reserva_desc') || 'Pará, natureza selvagem e cultura única. A Ilha de Marajó é a maior ilha fluviomarinha do mundo, famosa por sua cultura, búfalos e paisagens naturais.';
+
+    // Hotéis por destino (agora com 3 hotéis cada)
+    const hoteis = {
+        "Ilha de Marajó": [
+            { nome: "Hotel Marajó Palace", estado: "Pará", reviews: ["Ótimo atendimento!", "Quartos confortáveis."] },
+            { nome: "Pousada dos Búfalos", estado: "Pará", reviews: ["Café da manhã excelente.", "Localização perfeita."] },
+            { nome: "Marajó Eco Hotel", estado: "Pará", reviews: ["Contato com a natureza.", "Equipe prestativa."] }
+        ],
+        "Praia do Forte": [
+            { nome: "EcoResort Praia Forte", estado: "Bahia", reviews: ["Piscina maravilhosa!", "Equipe muito simpática."] },
+            { nome: "Pousada Vila Forte", estado: "Bahia", reviews: ["Quartos limpos.", "Perto da praia."] },
+            { nome: "Hotel Praia Bela", estado: "Bahia", reviews: ["Vista incrível.", "Café da manhã variado."] }
+        ],
+        "Bonito": [
+            { nome: "Hotel das Águas", estado: "Mato Grosso do Sul", reviews: ["Passeios incríveis.", "Natureza exuberante."] },
+            { nome: "Pousada Gruta Azul", estado: "Mato Grosso do Sul", reviews: ["Ótimo custo-benefício.", "Ambiente familiar."] },
+            { nome: "Bonito Plaza Hotel", estado: "Mato Grosso do Sul", reviews: ["Atendimento excelente.", "Piscina limpa."] }
+        ],
+        "Gramado": [
+            { nome: "Hotel Serra Gaúcha", estado: "Rio Grande do Sul", reviews: ["Café colonial delicioso.", "Próximo ao centro."] },
+            { nome: "Pousada das Hortênsias", estado: "Rio Grande do Sul", reviews: ["Ambiente aconchegante.", "Vista linda."] },
+            { nome: "Gramado Palace Hotel", estado: "Rio Grande do Sul", reviews: ["Quartos espaçosos.", "Ótima localização."] }
+        ],
+        "Jericoacoara": [
+            { nome: "Jeri Beach Hotel", estado: "Ceará", reviews: ["Vista para o mar.", "Atendimento nota 10."] },
+            { nome: "Pousada das Dunas", estado: "Ceará", reviews: ["Ótima localização.", "Café da manhã variado."] },
+            { nome: "Hotel Vila Jeri", estado: "Ceará", reviews: ["Ambiente agradável.", "Equipe simpática."] }
+        ],
+        "Ouro Preto": [
+            { nome: "Hotel Ouro Imperial", estado: "Minas Gerais", reviews: ["Prédio histórico.", "Equipe atenciosa."] },
+            { nome: "Pousada Colonial", estado: "Minas Gerais", reviews: ["Bem no centro.", "Quartos confortáveis."] },
+            { nome: "Hotel Solar das Lajes", estado: "Minas Gerais", reviews: ["Vista panorâmica.", "Café da manhã ótimo."] }
+        ],
+        "Lençóis Maranhenses": [
+            { nome: "Hotel das Dunas", estado: "Maranhão", reviews: ["Passeios organizados.", "Ótima estrutura."] },
+            { nome: "Pousada Lagoa Azul", estado: "Maranhão", reviews: ["Perto das lagoas.", "Ambiente tranquilo."] },
+            { nome: "Lençóis Park Hotel", estado: "Maranhão", reviews: ["Piscina excelente.", "Equipe atenciosa."] }
+        ],
+        "Foz do Iguaçu": [
+            { nome: "Hotel Cataratas", estado: "Paraná", reviews: ["Vista para as cataratas.", "Piscina aquecida."] },
+            { nome: "Pousada das Águas", estado: "Paraná", reviews: ["Ótima localização.", "Café da manhã farto."] },
+            { nome: "Iguaçu Palace Hotel", estado: "Paraná", reviews: ["Quartos modernos.", "Atendimento cordial."] }
+        ]
+    };
+
+    // Pega o nome do destino selecionado
+    const destino = localStorage.getItem('reserva_nome') || 'Ilha de Marajó';
+    const listaHoteis = hoteis[destino] || [];
+
+    // Monta o HTML dos hotéis com input radio
+    let htmlHoteis = '<h4>Hotéis disponíveis:</h4>';
+    listaHoteis.forEach((hotel, idx) => {
+        htmlHoteis += `<div class="hotel-box">
+            <label>
+                <input type="radio" name="hotel" value="${hotel.nome}" ${idx === 0 ? 'checked' : ''}>
+                <strong>${hotel.nome}</strong> - ${hotel.estado}
+            </label><br>
+            <span class="hotel-reviews">
+                ${hotel.reviews.map(r => `<span>“${r}”</span>`).join('<br>')}
+            </span>
+        </div>`;
+    });
+
+    // Adiciona os hotéis após as classes de voo
+    const form = document.querySelector('.reserva-form');
+    const classeVooDiv = form.querySelector('.classe-voo');
+    const divHoteis = document.createElement('div');
+    divHoteis.innerHTML = htmlHoteis;
+    divHoteis.className = "hoteis-disponiveis";
+    classeVooDiv.insertAdjacentElement('afterend', divHoteis);
+});
+</script>
+</body>
+</html>

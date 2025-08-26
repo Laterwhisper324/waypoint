@@ -205,7 +205,7 @@ body.section-expanded {
     box-shadow: 0 2px 8px rgba(49,116,125,0.10);
 }
 #login_bt {
-    margin-left: auto;
+    margin-left: 600px;
     margin-right: 20px;
     padding: 8px 16px;
     background: #F4C542; /* Amarelo Dourado */
@@ -225,7 +225,7 @@ body.section-expanded {
 #icon_top {
     width: 32px;
     height: 32px;
-    margin-left: 10px;
+
     border-radius: 100px;
     border: #fff solid 2px;
     background: #fff;

@@ -1,0 +1,63 @@
+body {
+            background: #E6EEF0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .contato-container {
+            max-width: 480px;
+            margin: 60px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(49,116,125,0.10);
+            padding: 32px 28px;
+            text-align: center;
+        }
+        .contato-title {
+            color: #31747D;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        .contato-info {
+            color: #2F3A3D;
+            font-size: 1.1em;
+            margin-bottom: 18px;
+        }
+        .contato-links a {
+            display: block;
+            color: #31747D;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 8px 0;
+            transition: color 0.2s;
+            word-break: break-all;
+        }
+        .contato-links a:hover {
+            color: #F4C542;
+        }
+        .contato-instagram {
+            margin-top: 18px;
+            font-size: 1.1em;
+        }
+        .contato-instagram a {
+            color: #E1306C;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contato-instagram a:hover {
+            color: #31747D;
+        }
+        #reserva-voltar {
+            color: #fff;
+            background-color: #31747D;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background 0.3s, color 0.3s;
+        }
+        #reserva-voltar:hover {
+            background: #F4C542; /* Amarelo Dourado */
+            color: #2F3A3D;      /* Cinza Escuro */
+        }

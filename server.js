@@ -137,14 +137,14 @@ app.post('/login', (req, res) => {
         }
         const linhas = data.split('\n');
         for (const linha of linhas) {
-            // Procura por email e senha na linha
-            const partes = linha.split('|').map(p => p.trim());
-            if (partes.length >= 3) {
-                const nomeArq = partes[0].replace('Nome:', '').trim();
-                const emailArq = partes[1].replace('Email:', '').trim();
-                const senhaArq = partes[2].replace('Senha:', '').trim();
+            // Extrai os campos da linha (senha só até o próximo | ou fim da linha)
+            const match = linha.match(/Nome:\s*(.*?)\s*\|\s*Email:\s*(.*?)\s*\|\s*Senha:\s*([^\|]*)/);
+            if (match) {
+                const nome = match[1].trim();
+                const emailArq = match[2].trim();
+                const senhaArq = match[3].trim();
                 if (emailArq === email && senhaArq === senha) {
-                    return res.send({ sucesso: true, nome: nomeArq });
+                    return res.send({ sucesso: true, nome });
                 }
             }
         }

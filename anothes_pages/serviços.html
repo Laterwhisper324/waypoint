@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa Turístico</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <style>
+        body {
+            background: #E6EEF0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .mapa-container {
+            max-width: 900px;
+            margin: 36px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(49,116,125,0.10);
+            padding: 32px 28px;
+        }
+        #map {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            margin-top: 18px;
+        }
+        .cidade-select {
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1.5px solid #A8D5BA;
+            background: #E6EEF0;
+            color: #2F3A3D;
+            margin-bottom: 12px;
+        }
+        .mapa-title {
+            color: #31747D;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        #reserva-voltar {
+            margin-top: 20px;
+            margin-left: 20px;
+            color: #fff;
+            background-color: #31747D;
+            text-decoration: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        #reserva-voltar:hover {
+            transition: 0.3s;
+            background: #F4C542; /* Amarelo Dourado */
+            color: #2F3A3D;      /* Cinza Escuro */
+        }
+        #reserva-voltar:not(:hover) {
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" id="reserva-voltar">← Voltar</a>
+    <div class="mapa-container">
+        <div class="mapa-title">Mapa Turístico</div>
+        <label for="cidade">Escolha a cidade:</label>
+        <select id="cidade" class="cidade-select">
+            <option value="marajo">Ilha de Marajó</option>
+            <option value="praiaforte">Praia do Forte</option>
+            <option value="bonito">Bonito</option>
+            <option value="gramado">Gramado</option>
+            <option value="jericoacoara">Jericoacoara</option>
+            <option value="ouropreto">Ouro Preto</option>
+            <option value="lencois">Lençóis Maranhenses</option>
+            <option value="foz">Foz do Iguaçu</option>
+        </select>
+        <label for="filtro" style="margin-left:20px;">Filtrar por:</label>
+        <select id="filtro" class="cidade-select">
+            <option value="todos">Todos</option>
+            <option value="restaurante">Restaurantes</option>
+            <option value="loja">Lojas</option>
+            <option value="ponto">Pontos Turísticos</option>
+        </select>
+        <div id="map"></div>
+        <div id="lista-locais" style="margin-top:28px;"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+const cidades = {
+    marajo: {
+        nome: "Ilha de Marajó",
+        center: [-0.9985, -49.9091],
+        zoom: 9,
+        pontos: [
+            {
+                nome: "Praia do Pesqueiro",
+                coords: [-0.7167, -49.6833],
+                categoria: "restaurante",
+                img: "https://www.guiadoturismobrasil.com/up/img/1430_praia-do-pesqueiro-marajo-pa.jpg",
+                desc: "Famosa praia de águas calmas, ideal para relaxar e saborear pratos típicos da região."
+            },
+            {
+                nome: "Fazenda São Jerônimo",
+                coords: [-1.1500, -49.9500],
+                categoria: "loja",
+                img: "https://www.ilhadomarajo.com.br/wp-content/uploads/2017/07/Fazenda-Sao-Jeronimo-Marajo.jpg",
+                desc: "Fazenda tradicional com passeios de búfalo e experiências culturais marajoaras."
+            },
+            {
+                nome: "Museu do Marajó",
+                coords: [-0.9985, -49.9091],
+                categoria: "ponto",
+                img: "https://www.ilhadomarajo.com.br/wp-content/uploads/2017/07/Museu-do-Marajo.jpg",
+                desc: "Museu dedicado à cultura e história da Ilha de Marajó, com peças arqueológicas e arte local."
+            },
+            {
+                nome: "Restaurante Ilha Bela",
+                coords: [-0.8000, -49.7000],
+                categoria: "restaurante",
+                img: "https://media-cdn.tripadvisor.com/media/photo-s/0e/7e/2e/7c/restaurante-ilha-bela.jpg",
+                desc: "Restaurante à beira-mar com pratos típicos de peixe e frutos do mar frescos."
+            },
+            {
+                nome: "Artesanato Marajoara",
+                coords: [-1.0000, -49.9200],
+                categoria: "loja",
+                img: "https://www.ilhadomarajo.com.br/wp-content/uploads/2017/07/Artesanato-Marajoara.jpg",
+                desc: "Loja de artesanato com cerâmicas e peças típicas da cultura marajoara."
+            }
+        ]
+    },
+    praiaforte: {
+        nome: "Praia do Forte",
+        center: [-12.5756, -38.0044],
+        zoom: 14,
+        pontos: [
+            { nome: "Projeto Tamar", coords: [-12.5750, -38.0040], categoria: "ponto" },
+            { nome: "Castelo Garcia D'Ávila", coords: [-12.5790, -38.0010], categoria: "ponto" },
+            { nome: "Restaurante Sabor da Praia", coords: [-12.5760, -38.0030], categoria: "restaurante" },
+            { nome: "Loja Praia Forte Souvenirs", coords: [-12.5740, -38.0050], categoria: "loja" }
+        ]
+    },
+    bonito: {
+        nome: "Bonito",
+        center: [-21.1261, -56.4847],
+        zoom: 13,
+        pontos: [
+            { nome: "Gruta do Lago Azul", coords: [-21.1167, -56.4833], categoria: "ponto" },
+            { nome: "Balneário Municipal", coords: [-21.1240, -56.4800], categoria: "ponto" },
+            { nome: "Restaurante Casa do Peixe", coords: [-21.1200, -56.4850], categoria: "restaurante" },
+            { nome: "Loja Bonito Artes", coords: [-21.1250, -56.4820], categoria: "loja" }
+        ]
+    },
+    gramado: {
+        nome: "Gramado",
+        center: [-29.3741, -50.8761],
+        zoom: 13,
+        pontos: [
+            { nome: "Lago Negro", coords: [-29.3720, -50.8700], categoria: "ponto" },
+            { nome: "Rua Coberta", coords: [-29.3780, -50.8740], categoria: "ponto" },
+            { nome: "Restaurante Belle du Valais", coords: [-29.3750, -50.8720], categoria: "restaurante" },
+            { nome: "Loja de Chocolates Prawer", coords: [-29.3760, -50.8750], categoria: "loja" }
+        ]
+    },
+    jericoacoara: {
+        nome: "Jericoacoara",
+        center: [-2.7960, -40.5127],
+        zoom: 13,
+        pontos: [
+            { nome: "Pedra Furada", coords: [-2.7990, -40.4890], categoria: "ponto" },
+            { nome: "Duna do Pôr do Sol", coords: [-2.7920, -40.5150], categoria: "ponto" },
+            { nome: "Restaurante Dona Amélia", coords: [-2.7950, -40.5130], categoria: "restaurante" },
+            { nome: "Loja Jeri Artes", coords: [-2.7970, -40.5110], categoria: "loja" }
+        ]
+    },
+    ouropreto: {
+        nome: "Ouro Preto",
+        center: [-20.3850, -43.5038],
+        zoom: 14,
+        pontos: [
+            { nome: "Igreja São Francisco de Assis", coords: [-20.3855, -43.5045], categoria: "ponto" },
+            { nome: "Museu da Inconfidência", coords: [-20.3850, -43.5030], categoria: "ponto" },
+            { nome: "Restaurante Bené da Flauta", coords: [-20.3860, -43.5050], categoria: "restaurante" },
+            { nome: "Loja Ouro Preto Artesanato", coords: [-20.3840, -43.5020], categoria: "loja" }
+        ]
+    },
+    lencois: {
+        nome: "Lençóis Maranhenses",
+        center: [-2.5333, -43.1167],
+        zoom: 10,
+        pontos: [
+            { nome: "Lagoa Azul", coords: [-2.5500, -43.1167], categoria: "ponto" },
+            { nome: "Lagoa Bonita", coords: [-2.5200, -43.1000], categoria: "ponto" },
+            { nome: "Restaurante das Dunas", coords: [-2.5400, -43.1100], categoria: "restaurante" },
+            { nome: "Loja Lençóis Souvenirs", coords: [-2.5300, -43.1200], categoria: "loja" }
+        ]
+    },
+    foz: {
+        nome: "Foz do Iguaçu",
+        center: [-25.5478, -54.5882],
+        zoom: 13,
+        pontos: [
+            { nome: "Cataratas do Iguaçu", coords: [-25.6953, -54.4367], categoria: "ponto" },
+            { nome: "Parque das Aves", coords: [-25.5986, -54.4872], categoria: "ponto" },
+            { nome: "Restaurante Porto Canoas", coords: [-25.6900, -54.4400], categoria: "restaurante" },
+            { nome: "Loja Duty Free Shop", coords: [-25.5950, -54.4740], categoria: "loja" }
+        ]
+    }
+};
+
+let map = L.map('map').setView(cidades.marajo.center, cidades.marajo.zoom);
+let markers = [];
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+}).addTo(map);
+
+let cidadeAtual = 'marajo';
+let filtroAtual = 'todos';
+
+function addPontos(pontos) {
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+    pontos
+        .filter(pt => filtroAtual === 'todos' || pt.categoria === filtroAtual)
+        .forEach(pt => {
+            const marker = L.marker(pt.coords).addTo(map).bindPopup(pt.nome + " (" + pt.categoria + ")");
+            markers.push(marker);
+        });
+}
+
+function atualizarListaLocais() {
+    const pontos = cidades[cidadeAtual].pontos
+        .filter(pt => filtroAtual === 'todos' || pt.categoria === filtroAtual);
+
+    let html = '<h3 style="color:#31747D;">Locais em destaque</h3>';
+    if (pontos.length === 0) {
+        html += '<p style="color:#2F3A3D;">Nenhum local encontrado para este filtro.</p>';
+    } else {
+        html += '<div style="display:flex;flex-wrap:wrap;gap:18px;">';
+        pontos.forEach(pt => {
+            html += `
+            <div style="background:#F8FAFA;border-radius:10px;box-shadow:0 2px 8px #0001;width:260px;overflow:hidden;">
+                <img src="${pt.img}" alt="${pt.nome}" style="width:100%;height:140px;object-fit:cover;">
+                <div style="padding:12px;">
+                    <strong style="color:#31747D;">${pt.nome}</strong>
+                    <span style="color:#888;font-size:0.97em;"> (${pt.categoria})</span>
+                    <p style="margin:8px 0 0 0;color:#2F3A3D;font-size:0.98em;">${pt.desc}</p>
+                </div>
+            </div>
+            `;
+        });
+        html += '</div>';
+    }
+    document.getElementById('lista-locais').innerHTML = html;
+}
+
+addPontos(cidades[cidadeAtual].pontos);
+atualizarListaLocais();
+
+document.getElementById('cidade').addEventListener('change', function() {
+    cidadeAtual = this.value;
+    map.setView(cidades[cidadeAtual].center, cidades[cidadeAtual].zoom);
+    addPontos(cidades[cidadeAtual].pontos);
+    atualizarListaLocais();
+});
+
+document.getElementById('filtro').addEventListener('change', function() {
+    filtroAtual = this.value;
+    addPontos(cidades[cidadeAtual].pontos);
+    atualizarListaLocais();
+});
+    </script>
+</body>
+</html>
